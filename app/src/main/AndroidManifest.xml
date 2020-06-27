@@ -11,6 +11,11 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
+
+<!--User List Activity-->
+        <activity android:name=".Activities.UserListActivity" android:label="Item List" />
+
+<!--Launcher-->
         <activity
             android:name=".Activities.WelcomeActivity"
             android:label="Profiler App">
@@ -19,7 +24,6 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-
     </application>
 
 </manifest>
