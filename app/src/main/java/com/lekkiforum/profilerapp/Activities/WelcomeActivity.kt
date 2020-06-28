@@ -5,16 +5,16 @@ import android.os.Bundle
 import android.widget.Button
 import androidx.appcompat.app.AppCompatActivity
 import com.google.gson.GsonBuilder
+import com.lekkiforum.profilerapp.Helpers.MainAdapter
 import com.lekkiforum.profilerapp.Models.VideoModel
 import com.lekkiforum.profilerapp.R
 import okhttp3.*
+import okhttp3.RequestBody.Companion.toRequestBody
 import java.io.IOException
-import java.util.*
 
 class WelcomeActivity : AppCompatActivity() {
 // variables
 lateinit var getStartedBtn: Button
-
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -27,30 +27,34 @@ lateinit var getStartedBtn: Button
             finish()
         }
 
-//        get data
-        getData();
+//        this.postData()
     }
 
 
-}
-private fun getData(){
-    val url = "http://api.letsbuildthatapp.com/youtube/home_feed"
-    val request = Request.Builder().url(url).build()
-    val client = OkHttpClient()
-    client.newCall(request).enqueue(object: Callback{
-        override fun onResponse(call: Call, response: Response) {
-            val body = response?.body?.string()
-            val gson = GsonBuilder().create()
-            val homeFeed = gson.fromJson(body, VideoModel::class.java)
-            println(homeFeed)
-        }
+    private fun postData(){
+var url2 = "speed4nigeria.herokuapp.com/api/auth"
+        val client = OkHttpClient()
+        var id_token = "ioeieieie"
+        var reqBody = id_token.toRequestBody()
+        val url = "http://api.letsbuildthatapp.com/youtube/home_feed"
+        val request = Request.Builder().method("POST", reqBody).url(url2).build()
+        client.newCall(request).enqueue(object: Callback {
+            override fun onResponse(call: Call, response: Response) {
+                val body = response?.body?.string()
+                val gson = GsonBuilder().create()
+//                val  videoList = gson.fromJson(body, VideoModel::class.java)
 
-        override fun onFailure(call: Call, e: IOException) {
-            println("Error getting posts... $e")
-        }
-    })
+                println( body)
+            }
 
+            override fun onFailure(call: Call, e: IOException) {
+                println("Error getting posts... $e")
+            }
+        })
+
+    }
 }
+
 
 
 

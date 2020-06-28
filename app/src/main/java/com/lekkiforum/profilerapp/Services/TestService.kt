@@ -1,12 +1,13 @@
 package com.lekkiforum.profilerapp.Services
 
 import com.lekkiforum.profilerapp.Models.TestModel
+import com.lekkiforum.profilerapp.Models.VideoModel
 import retrofit2.Call
 import retrofit2.http.GET
 import retrofit2.http.Query
 
-interface TodoService {
+interface TestService {
+        @GET("/todos")
+        fun getTestList(): Call<TestModel>
 
-    @GET("/todos")
-    fun getTodos(): Call<TestModel>
 }

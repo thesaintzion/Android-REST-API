@@ -2,6 +2,7 @@ package com.lekkiforum.profilerapp.Activities
 
 import android.graphics.Color
 import android.os.Bundle
+import android.util.Log
 import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
@@ -10,6 +11,7 @@ import com.lekkiforum.profilerapp.Helpers.MainAdapter
 import com.lekkiforum.profilerapp.Models.VideoModel
 import com.lekkiforum.profilerapp.R
 import okhttp3.*
+import okhttp3.RequestBody.Companion.toRequestBody
 import java.io.IOException
 
 class UserListActivity : AppCompatActivity() {
@@ -27,11 +29,14 @@ class UserListActivity : AppCompatActivity() {
 //
 
 // functions
-        this.getData()
+        postData()
+        getData()
+
 
     }
 
     private fun getData(){
+
         val url = "http://api.letsbuildthatapp.com/youtube/home_feed"
         val request = Request.Builder().url(url).build()
         val client = OkHttpClient()
@@ -40,12 +45,42 @@ class UserListActivity : AppCompatActivity() {
                 val body = response?.body?.string()
                 val gson = GsonBuilder().create()
                 val  videoList = gson.fromJson(body, VideoModel::class.java)
-                recycler_view_1.adapter = MainAdapter(videoList)
+                runOnUiThread{
+                    recycler_view_1.adapter = MainAdapter(videoList)
+                }
                 println(videoList)
             }
 
             override fun onFailure(call: Call, e: IOException) {
                 println("Error getting posts... $e")
+            }
+        })
+
+    }
+
+    private fun postData(){
+        val tag = "SAINT"
+        var url = "https://speed4nigeria.herokuapp.com/api/auth"
+        val client = OkHttpClient()
+        var id_token = "ioeieieie"
+        var reqBody = id_token.toRequestBody()
+        val request = Request.Builder()
+            .method("POST", reqBody).url(url).build()
+
+        client.newCall(request).enqueue(object: Callback {
+            override fun onResponse(call: Call, response: Response) {
+                val body = response?.body?.string()
+//                val gson = GsonBuilder().create()
+//                val  videoList = gson.fromJson(body)
+
+//                println(body)
+                Log.i(tag, body);
+            }
+
+            override fun onFailure(call: Call, e: IOException) {
+//                println("Error getting posts... $e")
+                Log.i(tag, e.message);
+
             }
         })
 

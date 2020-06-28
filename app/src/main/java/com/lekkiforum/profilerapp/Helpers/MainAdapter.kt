@@ -9,7 +9,7 @@ import com.lekkiforum.profilerapp.Models.VideoModel
 import com.lekkiforum.profilerapp.R
 import kotlinx.android.synthetic.main.activity_user_row.view.*
 
-class MainAdapter constructor(val videoModel: VideoModel): RecyclerView.Adapter<ViewHolderOne>() {
+class MainAdapter (val videoModel: VideoModel): RecyclerView.Adapter<ViewHolderOne>() {
 
     var listItems = listOf("The  Title", "The  Tile", "The Title", "The  Title", "The  Title", "The  Title", "The  Title", "The  Title")
 
@@ -24,9 +24,10 @@ class MainAdapter constructor(val videoModel: VideoModel): RecyclerView.Adapter<
     //    the onClick...
     override fun onBindViewHolder(holder: ViewHolderOne, position: Int) {
         var thePosition = position+1
-        var title = listItems[position]
-        holder?.view?.tv_row_title?.text = "$title ($thePosition)"
-        holder?.view?.tv_row_subtitle?.text = "The subtitle ($thePosition)"
+        var video =  videoModel.videos[position]
+        holder?.view?.tv_row_title?.text = "${video.name} ($thePosition)"
+        holder?.view?.tv_row_subtitle?.text = "${video.channel.name} (${video.channel.numberOfSubscribers})"
+//        holder?.view?.tv_row_subtitle?.im_row_img?.setImageURI("${}")
 
         if(thePosition == 6){
             holder?.view?.ll_row_list_card?.setBackgroundColor(Color.LTGRAY)
@@ -38,13 +39,11 @@ class MainAdapter constructor(val videoModel: VideoModel): RecyclerView.Adapter<
 
 //    the item count
     override fun getItemCount(): Int {
-        return  listItems.size
+        return  videoModel.videos.count()
     }
 
 
 //    The view holder...
 
 }
-class ViewHolderOne(val  view: View): RecyclerView.ViewHolder(view) {
-
-}
+class ViewHolderOne(val  view: View): RecyclerView.ViewHolder(view)
