@@ -8,14 +8,16 @@ import com.google.gson.GsonBuilder
 import com.lekkiforum.profilerapp.Helpers.MainAdapter
 import com.lekkiforum.profilerapp.Models.VideoModel
 import com.lekkiforum.profilerapp.R
+import kotlinx.android.synthetic.main.activity_welcome.*
 import okhttp3.*
 import okhttp3.RequestBody.Companion.toRequestBody
 import java.io.IOException
 
 class WelcomeActivity : AppCompatActivity() {
 // variables
-lateinit var getStartedBtn: Button
+    lateinit var getStartedBtn: Button
     lateinit var socketBtn: Button
+    lateinit var onlineUsersBtn: Button
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -31,6 +33,11 @@ lateinit var getStartedBtn: Button
 
         this.socketBtn.setOnClickListener{
             startActivity(Intent(this, SocketActivity::class.java))
+            finish()
+        }
+
+        bt_online_users.setOnClickListener{
+            startActivity(Intent(this, OnlineUserActivity::class.java))
             finish()
         }
 
