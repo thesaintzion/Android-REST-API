@@ -15,15 +15,22 @@ import java.io.IOException
 class WelcomeActivity : AppCompatActivity() {
 // variables
 lateinit var getStartedBtn: Button
+    lateinit var socketBtn: Button
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_welcome)
         this.getStartedBtn = findViewById(R.id.bt_get_started)
+        this.socketBtn = findViewById(R.id.bt_socket)
 
       //  Got to next page...
         this.getStartedBtn.setOnClickListener{
             startActivity(Intent(this, UserListActivity::class.java))
+            finish()
+        }
+
+        this.socketBtn.setOnClickListener{
+            startActivity(Intent(this, SocketActivity::class.java))
             finish()
         }
 

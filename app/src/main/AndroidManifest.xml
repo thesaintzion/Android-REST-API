@@ -15,6 +15,12 @@
 <!--User List Activity-->
         <activity android:name=".Activities.UserListActivity" android:label="Item List" />
 
+<!--Socket activity -->
+        <activity android:name=".Activities.SocketActivity" android:label="Connect"></activity>
+        
+<!--Online users activity-->
+        <activity android:name=".Activities.OnlineUserActivity" android:label="Online users"></activity>
+
 <!--Launcher-->
         <activity
             android:name=".Activities.WelcomeActivity"
