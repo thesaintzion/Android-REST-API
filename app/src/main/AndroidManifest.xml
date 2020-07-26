@@ -19,7 +19,10 @@
         <activity android:name=".Activities.SocketActivity" android:label="Connect"></activity>
         
 <!--Online users activity-->
-        <activity android:name=".Activities.OnlineUserActivity" android:label="Online users"></activity>
+        <activity android:name=".Activities.OnlineUserActivity" android:parentActivityName=".Activities.WelcomeActivity" android:label="Online users"></activity>
+
+        <!--DDs-->
+        <activity android:name=".Activities.DDListActivity" android:parentActivityName=".Activities.WelcomeActivity" android:label="Online users"></activity>
 
 <!--Launcher-->
         <activity

@@ -7,9 +7,9 @@ constructor(
     var link: String? = null,
     var imageUrl: String? = null,
     var numberOfViews: Int,
+
     var channel: Channel
 ){
-
     class Channel(var name: String, var profileImageUrl: String, var numberOfSubscribers: String)
 
 }

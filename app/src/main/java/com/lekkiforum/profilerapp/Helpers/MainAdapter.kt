@@ -33,8 +33,6 @@ class MainAdapter (val videoModel: VideoModel): RecyclerView.Adapter<ViewHolderO
             holder?.view?.ll_row_list_card?.setBackgroundColor(Color.LTGRAY)
             holder?.view?.tv_row_subtitle?.text = "Compleated ($thePosition)"
         }
-
-
     }
 
 //    the item count

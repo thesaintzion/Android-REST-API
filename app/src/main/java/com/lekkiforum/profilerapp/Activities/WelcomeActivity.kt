@@ -28,17 +28,17 @@ class WelcomeActivity : AppCompatActivity() {
       //  Got to next page...
         this.getStartedBtn.setOnClickListener{
             startActivity(Intent(this, UserListActivity::class.java))
-            finish()
+//            finish()
         }
 
         this.socketBtn.setOnClickListener{
             startActivity(Intent(this, SocketActivity::class.java))
-            finish()
+//            finish()
         }
 
         bt_online_users.setOnClickListener{
             startActivity(Intent(this, OnlineUserActivity::class.java))
-            finish()
+//            finish()
         }
 
 //        this.postData()

@@ -1,16 +1,16 @@
 package com.lekkiforum.profilerapp.Helpers
 
-import com.lekkiforum.profilerapp.Activities.DetailActivity
+import android.content.Intent
+import android.util.Log
+import com.lekkiforum.profilerapp.Activities.DDDetailActivity
 import com.lekkiforum.profilerapp.Models.DDModel
 import com.lekkiforum.profilerapp.R
 
-mport android.content.Intent
-import android.support.v7.widget.RecyclerView
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.TextView
-
+import androidx.recyclerview.widget.RecyclerView
 
 
 class DDAdapters(private val destinationList: List<DDModel>) : RecyclerView.Adapter<DDAdapters.ViewHolder>() {
@@ -18,7 +18,7 @@ class DDAdapters(private val destinationList: List<DDModel>) : RecyclerView.Adap
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
 
 // NOTE:
-        val view = LayoutInflater.from(parent.context).inflate(R.layout.list_item, parent, false)
+        val view = LayoutInflater.from(parent.context).inflate(R.layout.dd_list_item, parent, false)
         return ViewHolder(view)
     }
 
@@ -28,15 +28,16 @@ class DDAdapters(private val destinationList: List<DDModel>) : RecyclerView.Adap
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
         holder.destination = destinationList[position]
         holder.txvDestination.text = destinationList[position].city
+//    Toast.makeText(this, "")
 
-        holder.itemView.setOnClickListener { v ->
-            val context = v.context
-            val intent = Intent(context, DetailActivity::class.java)
-
-            intent.putExtra(DetailActivity.ARG_ITEM_ID, holder.destination!!.id)
-
-            context.startActivity(intent)
-        }
+//        holder.itemView.setOnClickListener { v ->
+//            val context = v.context
+//            val intent = Intent(context, DDDetailActivity::class.java)
+//
+//            intent.putExtra(DDDetailActivity.ARG_ITEM_ID, holder.d n!!.id)
+//
+//            context.startActivity(intent)
+//        }
     }
 
     override fun getItemCount(): Int {
